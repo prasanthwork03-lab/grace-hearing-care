@@ -1,0 +1,13 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "leads": {
+      ".read": "auth != null && auth.token.email === 'admin@gracehearingcare.com'",
+      "$leadId": {
+        ".write": "(!data.exists() && newData.exists()) || (auth != null && auth.token.email === 'admin@gracehearingcare.com')",
+        ".validate": "data.exists() || (newData.hasChildren(['name', 'phone', 'area', 'requirement', 'preferredContact', 'appointmentDate', 'message', 'leadStatus', 'isChennaiLead', 'locationVerification', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'deviceType', 'pageUrl', 'submittedAt', 'createdAt', 'adminNotes']) && newData.child('name').isString() && newData.child('name').val().length >= 2 && newData.child('phone').isString() && newData.child('phone').val().matches(/^[6-9][0-9]{9}$/) && newData.child('area').isString() && newData.child('requirement').isString() && newData.child('preferredContact').isString() && newData.child('appointmentDate').isString() && newData.child('message').isString() && (newData.child('leadStatus').val() === 'new_chennai_lead' || newData.child('leadStatus').val() === 'needs_location_verification' || newData.child('leadStatus').val() === 'outside_chennai_lead') && newData.child('isChennaiLead').isBoolean() && (newData.child('locationVerification').val() === 'verified_chennai_area' || newData.child('locationVerification').val() === 'unverified' || newData.child('locationVerification').val() === 'outside_chennai') && newData.child('utm_source').isString() && newData.child('utm_medium').isString() && newData.child('utm_campaign').isString() && newData.child('utm_term').isString() && newData.child('utm_content').isString() && newData.child('gclid').isString() && newData.child('deviceType').isString() && newData.child('pageUrl').isString() && newData.child('submittedAt').isNumber() && newData.child('createdAt').isNumber() && newData.child('adminNotes').val() === '')"
+      }
+    }
+  }
+}
