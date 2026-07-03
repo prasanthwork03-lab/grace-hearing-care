@@ -73,7 +73,7 @@ We use **Firebase Realtime Database** for instant syncing in the admin panel.
    * Choose **Start in Locked Mode**.
 3. Go to **Project Settings** (gear icon) -> **General**, scroll down to **Your apps**, and click the Web icon (`</>`) to register a web app.
 4. Copy the `firebaseConfig` keys and paste them into your local `.env.local` file.
-5. In **Authentication** -> **Sign-in method**, enable **Email/Password**. In **Users**, create `admin@gracehearingcare.com` with the chosen admin password. The login screen maps the public username `admin` to this Firebase account. Do not add a public sign-up screen or put the password in the site environment.
+5. In **Authentication** -> **Sign-in method**, enable **Email/Password**. In **Users**, create `prasanthwork03@gmail.com` with the chosen admin password. The login screen maps the public username `admin` to this Firebase account. Do not add a public sign-up screen or put the password in the site environment.
 6. In **Realtime Database** -> **Rules**, paste the complete contents of `firebase.rules.json` and publish it. These rules allow anonymous visitors to create a validated lead, but only Firebase-authenticated staff can read, update, or delete leads.
 
 ---

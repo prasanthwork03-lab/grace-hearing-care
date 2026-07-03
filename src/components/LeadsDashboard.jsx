@@ -11,6 +11,7 @@ import {
   Search,
   Users
 } from "lucide-react";
+import { ADMIN_EMAIL } from "../lib/adminConfig";
 import { auth, db, onValue, ref, remove, update } from "../lib/firebase";
 import LeadCard from "./LeadCard";
 
@@ -82,7 +83,7 @@ export default function LeadsDashboard() {
     }
 
     return onAuthStateChanged(auth, (user) => {
-      if (user?.email?.toLowerCase() === "admin@gracehearingcare.com") {
+      if (user?.email?.toLowerCase() === ADMIN_EMAIL) {
         setIsAuthorized(true);
       } else {
         if (user) signOut(auth).catch((error) => console.error("Could not sign out unauthorized user:", error));

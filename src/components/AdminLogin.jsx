@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { browserSessionPersistence, onAuthStateChanged, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { AlertCircle, Lock, Sparkles, User } from "lucide-react";
+import { ADMIN_EMAIL, ADMIN_USERNAME } from "../lib/adminConfig";
 import { auth, firebaseConfigurationError } from "../lib/firebase";
 
 export default function AdminLogin() {
@@ -18,7 +19,7 @@ export default function AdminLogin() {
     }
 
     return onAuthStateChanged(auth, (user) => {
-      if (user?.email?.toLowerCase() === "admin@gracehearingcare.com") {
+      if (user?.email?.toLowerCase() === ADMIN_EMAIL) {
         navigate("/admin/leads", { replace: true });
       } else if (user) {
         signOut(auth).catch((error) => console.error("Could not sign out unauthorized user:", error));
@@ -37,10 +38,7 @@ export default function AdminLogin() {
       return;
     }
 
-    const adminUsername = import.meta.env.VITE_ADMIN_USERNAME || "admin";
-    const adminEmail = import.meta.env.VITE_ADMIN_EMAIL || "admin@gracehearingcare.com";
-
-    if (username.trim().toLowerCase() !== adminUsername.toLowerCase()) {
+    if (username.trim().toLowerCase() !== ADMIN_USERNAME.toLowerCase()) {
       setError("Incorrect username or password.");
       setLoading(false);
       return;
@@ -48,7 +46,7 @@ export default function AdminLogin() {
 
     try {
       await setPersistence(auth, browserSessionPersistence);
-      await signInWithEmailAndPassword(auth, adminEmail, password);
+      await signInWithEmailAndPassword(auth, ADMIN_EMAIL, password);
       navigate("/admin/leads", { replace: true });
     } catch (loginError) {
       console.error("Firebase admin login failed:", loginError);
