@@ -156,15 +156,15 @@ export default function LeadForm({ selectedRequirement }) {
   };
 
   return (
-    <section id="lead-form" className="py-16 md:py-24 bg-slate-50 relative scroll-mt-20">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+    <section id="lead-form" className="py-12 pb-16 md:py-24 bg-slate-50 relative scroll-mt-20">
+      <div className="max-w-3xl mx-auto px-3 sm:px-6">
         
         {/* Header Box */}
-        <div className="text-center space-y-4 mb-10">
+        <div className="text-center space-y-3 sm:space-y-4 mb-8 sm:mb-10 px-2">
           <span className="text-xs uppercase font-extrabold tracking-widest text-brand-teal bg-brand-teal/10 px-3 py-1.5 rounded-full">
             Appointment Booking
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-blue-dark tracking-tight">
+          <h2 className="text-[1.75rem] leading-tight sm:text-4xl font-extrabold text-brand-blue-dark tracking-tight">
             Book Your Hearing Aid Consultation
           </h2>
           <p className="text-sm sm:text-base text-slate-500 max-w-xl mx-auto">
@@ -173,7 +173,7 @@ export default function LeadForm({ selectedRequirement }) {
         </div>
 
         {/* Lead Form Card */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-100 relative">
+        <div className="bg-white rounded-3xl p-5 sm:p-10 shadow-xl border border-slate-100 relative overflow-visible">
           
           {errors.submit && (
             <div className="mb-6 p-4 bg-rose-50 border border-rose-100 rounded-2xl flex items-center space-x-3 text-rose-800 text-sm font-semibold">
@@ -182,7 +182,7 @@ export default function LeadForm({ selectedRequirement }) {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
             
             {/* Input Name */}
             <div className="space-y-1.5 text-left">
@@ -306,7 +306,7 @@ export default function LeadForm({ selectedRequirement }) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full gradient-btn py-4 rounded-xl font-extrabold text-base tracking-wider uppercase transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg shadow-brand-teal/20 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full min-h-14 gradient-btn py-4 rounded-xl font-extrabold text-sm sm:text-base tracking-wider uppercase transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg shadow-brand-teal/20 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed scroll-mb-24"
             >
               {loading ? (
                 <>
