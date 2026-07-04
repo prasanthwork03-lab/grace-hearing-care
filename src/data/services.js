@@ -43,7 +43,7 @@ export const services = [
     id: "exchange_upgrade",
     name: "Hearing Aid Exchange / Upgrade",
     description: "Exchange your old hearing aid for a brand new model with advanced digital features.",
-    image: "/assets/exchange.jpeg",
+    image: "/assets/exchange-upgrade.png",
     benefit: "Attractive exchange discount value and instant upgrade to clearer hearing.",
     requirementVal: "Old Hearing Aid Exchange"
   }
