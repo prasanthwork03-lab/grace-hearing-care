@@ -17,11 +17,11 @@ export const services = [
   },
   {
     id: "ric_hearing_aid",
-    name: "RIC Hearing Aids",
-    description: "Modern, lightweight receiver-in-canal option with clear sound support and open fit.",
-    image: "/assets/ric.jpeg",
-    benefit: "Natural sound quality, bluetooth connectivity options, and very comfortable style.",
-    requirementVal: "Hearing Aid Trial"
+    name: "RIC & Rechargeable Hearing Aids",
+    description: "Modern, lightweight receiver-in-canal hearing aids with convenient rechargeable power and clear sound support.",
+    image: "/assets/ric-rechargeable.png",
+    benefit: "Natural sound quality, Bluetooth connectivity, long battery life, and comfortable open-fit style.",
+    requirementVal: "Rechargeable Hearing Aid"
   },
   {
     id: "rechargeable_hearing_aid",
