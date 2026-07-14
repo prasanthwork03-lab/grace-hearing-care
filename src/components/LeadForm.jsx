@@ -309,9 +309,11 @@ export default function LeadForm({ selectedRequirement, variant = "section" }) {
             </div>
             )}
 
-            <p className={`${isHeroVariant ? "rounded-xl bg-amber-50 px-3 py-2 text-[11px] text-amber-900" : "text-xs text-slate-500"} break-words font-semibold leading-relaxed`}>
-              {isHeroVariant ? "Mandaveli, Chennai clinic. Local appointments get priority." : "Grace Speech & Hearing is based in Mandaveli, Chennai. Chennai appointments are given priority."}
-            </p>
+            {!isHeroVariant && (
+              <p className="break-words text-xs font-semibold leading-relaxed text-slate-500">
+                Grace Speech &amp; Hearing is based in Mandaveli, Chennai. Chennai appointments are given priority.
+              </p>
+            )}
 
             {/* Submit Button */}
             <button

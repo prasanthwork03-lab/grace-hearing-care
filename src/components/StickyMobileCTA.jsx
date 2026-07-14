@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CalendarRange } from "lucide-react";
+import { CalendarRange, Sparkles } from "lucide-react";
 
 export default function StickyMobileCTA() {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -27,16 +27,25 @@ export default function StickyMobileCTA() {
   return (
     <div
       aria-hidden={isFormVisible}
-      className={`fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white/90 backdrop-blur-lg border-t border-slate-100/60 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] px-3 sm:px-5 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex justify-center items-center transition-all duration-300 ${isFormVisible ? "translate-y-full opacity-0 pointer-events-none" : "translate-y-0 opacity-100"}`}
+      className={`fixed bottom-0 left-0 right-0 z-50 lg:hidden px-4 pb-[max(0.9rem,env(safe-area-inset-bottom))] pt-5 flex justify-center items-center transition-all duration-300 ${isFormVisible ? "translate-y-full opacity-0 pointer-events-none" : "translate-y-0 opacity-100"}`}
     >
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md rounded-[1.6rem] border border-white/70 bg-white/80 p-2 shadow-[0_-10px_35px_rgba(15,23,42,0.16)] backdrop-blur-xl">
         <button
           type="button"
           onClick={scrollToForm}
-          className="w-full min-h-12 py-3 rounded-2xl bg-gradient-to-r from-brand-blue to-brand-teal text-white font-extrabold text-sm uppercase tracking-wider shadow-lg shadow-brand-teal/20 animate-glow-pulse transition-all active:scale-[0.98] flex items-center justify-center space-x-2"
+          className="relative w-full min-h-14 overflow-hidden rounded-[1.25rem] bg-gradient-to-r from-brand-blue via-brand-teal to-brand-cyan px-4 py-3 text-white shadow-xl shadow-brand-teal/30 animate-glow-pulse transition-all active:scale-[0.98] flex items-center justify-center gap-3"
         >
-          <CalendarRange className="h-5 w-5 animate-bounce" style={{ animationDuration: "2s" }} />
-          <span>Book Appointment</span>
+          <span className="absolute inset-0 bg-[linear-gradient(110deg,transparent,rgba(255,255,255,.28),transparent)] translate-x-[-120%] animate-[shine_2.8s_ease-in-out_infinite]" />
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/18 ring-1 ring-white/25">
+            <CalendarRange className="h-5 w-5" />
+          </span>
+          <span className="relative text-left leading-tight">
+            <span className="block text-sm font-black uppercase tracking-wide">Book Appointment</span>
+            <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-[0.18em] text-cyan-100">
+              <Sparkles className="h-3 w-3" />
+              Free trial callback
+            </span>
+          </span>
         </button>
       </div>
     </div>

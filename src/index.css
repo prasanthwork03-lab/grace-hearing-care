@@ -84,3 +84,12 @@
 .animate-glow-pulse {
   animation: glowPulse 2.5s infinite ease-in-out;
 }
+
+@keyframes shine {
+  0% {
+    transform: translateX(-120%);
+  }
+  45%, 100% {
+    transform: translateX(120%);
+  }
+}

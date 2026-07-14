@@ -1,18 +1,26 @@
 import React from "react";
-import { Phone, MessageSquare, Star, CheckCircle2, MapPin, Clock, ShieldCheck, Volume2 } from "lucide-react";
+import { Phone, MessageSquare, Star, CheckCircle2, MapPin, Clock, Volume2 } from "lucide-react";
 import LeadForm from "./LeadForm";
 
 export default function Hero() {
   const trustPoints = [
     "Hearing aid trial before buying",
-    "Senior-friendly consultation",
-    "Mandaveli / R.A. Puram, Chennai"
+    "Senior-friendly consultation"
   ];
 
   const painTriggers = [
-    "TV volume becoming too high?",
-    "Parents asking you to repeat?",
-    "Phone calls sounding unclear?"
+    {
+      pain: "TV volume too high?",
+      solution: "We tune speech clarity so family TV time feels normal again."
+    },
+    {
+      pain: "Parents keep asking to repeat?",
+      solution: "Try comfortable hearing aids made for daily conversations."
+    },
+    {
+      pain: "Phone calls unclear?",
+      solution: "Get guidance for Bluetooth and rechargeable hearing options."
+    }
   ];
 
   return (
@@ -48,20 +56,37 @@ export default function Hero() {
               <span className="hidden sm:inline">Mandaveli Hearing Aid Consultation</span>
             </div>
 
+            <div className="overflow-hidden rounded-[1.75rem] border border-white bg-white shadow-xl shadow-slate-900/10 lg:hidden">
+              <img
+                src="/assets/hearing-consultation.png"
+                alt="Friendly hearing aid consultation in Chennai"
+                className="h-48 w-full object-cover"
+              />
+              <div className="grid gap-2 p-4">
+                {trustPoints.map((point) => (
+                  <div key={point} className="flex items-center gap-2 text-left text-xs font-extrabold text-slate-700">
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-brand-teal" />
+                    <span>{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div className="space-y-3">
               <h1 className="mx-auto max-w-[19.5rem] text-[1.55rem] font-black leading-[1.1] tracking-tight text-brand-blue-dark sm:max-w-2xl sm:text-5xl lg:mx-0 lg:text-6xl">
-                Help your family hear clearly again — without confusion.
+                Hear conversations clearly again.
               </h1>
               <p className="mx-auto max-w-[18rem] text-sm font-medium leading-relaxed text-slate-600 sm:max-w-2xl sm:text-lg lg:mx-0">
-                Book a friendly hearing aid trial in Chennai. Get clear guidance for BTE, CIC, RIC and rechargeable options.
+                Book a simple hearing aid trial. We help you choose the right fit without pressure.
               </p>
             </div>
 
             <div className="grid gap-2 sm:grid-cols-3">
               {painTriggers.map((item) => (
-                <div key={item} className="rounded-2xl border border-amber-100 bg-amber-50 px-3 py-3 text-left text-sm font-bold text-amber-950">
+                <div key={item.pain} className="rounded-2xl border border-amber-100 bg-amber-50 px-3 py-3 text-left shadow-sm">
                   <Volume2 className="mb-1 h-4 w-4 text-amber-600" />
-                  {item}
+                  <p className="text-sm font-black text-amber-950">{item.pain}</p>
+                  <p className="mt-1 text-[11px] font-bold leading-snug text-amber-800">{item.solution}</p>
                 </div>
               ))}
             </div>
@@ -104,29 +129,9 @@ export default function Hero() {
 
           <div className="min-w-0 lg:sticky lg:top-24">
             <LeadForm variant="hero" />
-            <div className="mt-3 rounded-2xl border border-teal-100 bg-white/85 p-3 text-center text-xs font-bold text-slate-600 shadow-sm">
-              <ShieldCheck className="mr-1 inline h-4 w-4 text-brand-teal" />
-              No spam. Your details go only to Grace Speech &amp; Hearing appointment team.
-            </div>
           </div>
 
           <div className="space-y-4 lg:hidden">
-            <div className="overflow-hidden rounded-[1.75rem] border border-white bg-white shadow-xl shadow-slate-900/10">
-              <img
-                src="/assets/hearing-consultation.png"
-                alt="Friendly hearing aid consultation in Chennai"
-                className="h-52 w-full object-cover"
-              />
-              <div className="grid gap-2 p-4">
-                {trustPoints.map((point) => (
-                  <div key={point} className="flex items-center gap-2 text-left text-xs font-extrabold text-slate-700">
-                    <CheckCircle2 className="h-4 w-4 shrink-0 text-brand-teal" />
-                    <span>{point}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             <div className="grid gap-3 sm:grid-cols-2">
               <a
                 href="tel:+919840029521"
