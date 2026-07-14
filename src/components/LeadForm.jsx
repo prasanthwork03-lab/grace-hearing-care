@@ -6,13 +6,14 @@ import { submitLeadToDb } from "../lib/firebase";
 import { allowedChennaiAreas } from "../data/chennaiAreas";
 import { User, Phone, MapPin, ClipboardList, Send, AlertCircle } from "lucide-react";
 
-export default function LeadForm({ selectedRequirement }) {
+export default function LeadForm({ selectedRequirement, variant = "section" }) {
   const navigate = useNavigate();
+  const isHeroVariant = variant === "hero";
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     area: "",
-    requirement: "",
+    requirement: isHeroVariant ? "Book Appointment" : "",
     preferredContact: "Call",
     appointmentDate: "",
     message: ""
@@ -155,11 +156,11 @@ export default function LeadForm({ selectedRequirement }) {
     }
   };
 
-  return (
-    <section id="lead-form" className="py-12 pb-16 md:py-24 bg-slate-50 relative scroll-mt-20">
-      <div className="max-w-3xl mx-auto px-3 sm:px-6">
+  const formContent = (
+    <>
         
         {/* Header Box */}
+        {!isHeroVariant && (
         <div className="text-center space-y-3 sm:space-y-4 mb-8 sm:mb-10 px-2">
           <span className="text-xs uppercase font-extrabold tracking-widest text-brand-teal bg-brand-teal/10 px-3 py-1.5 rounded-full">
             Appointment Booking
@@ -171,9 +172,17 @@ export default function LeadForm({ selectedRequirement }) {
             Fill the form below, and our Chennai care team will contact you within 2 hours to confirm your trial slot.
           </p>
         </div>
+        )}
 
         {/* Lead Form Card */}
-        <div className="bg-white rounded-3xl p-5 sm:p-10 shadow-xl border border-slate-100 relative overflow-visible">
+        <div className={`${isHeroVariant ? "min-w-0 max-w-full bg-white/95 rounded-[1.75rem] p-4 sm:p-5 shadow-2xl shadow-slate-900/15 border border-white/80" : "bg-white rounded-3xl p-5 sm:p-10 shadow-xl border border-slate-100"} relative overflow-visible`}>
+          {isHeroVariant && (
+            <div className="mb-4 rounded-2xl bg-gradient-to-r from-brand-blue-dark to-brand-teal p-4 text-white">
+              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-cyan-100">Fast Appointment Booking</p>
+              <h2 className="mt-1 text-2xl font-black leading-tight">Book a Hearing Aid Trial</h2>
+              <p className="mt-1 text-xs font-semibold text-white/80">Only 3 details. Our Chennai team will call back.</p>
+            </div>
+          )}
           
           {errors.submit && (
             <div className="mb-6 p-4 bg-rose-50 border border-rose-100 rounded-2xl flex items-center space-x-3 text-rose-800 text-sm font-semibold">
@@ -198,7 +207,7 @@ export default function LeadForm({ selectedRequirement }) {
                   placeholder="Enter patient name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className={`w-full pl-12 pr-4 py-3.5 rounded-xl border ${errors.name ? "border-rose-300 focus:ring-rose-200 focus:border-rose-400" : "border-slate-200 focus:ring-brand-teal/20 focus:border-brand-teal"} bg-slate-50/50 text-slate-900 placeholder-slate-400 font-medium text-sm focus:outline-none focus:ring-4 transition`}
+                  className={`w-full min-w-0 pl-12 pr-4 py-3.5 rounded-xl border ${errors.name ? "border-rose-300 focus:ring-rose-200 focus:border-rose-400" : "border-slate-200 focus:ring-brand-teal/20 focus:border-brand-teal"} bg-slate-50/50 text-slate-900 placeholder-slate-400 font-medium text-sm focus:outline-none focus:ring-4 transition`}
                 />
               </div>
               {errors.name && <p className="text-xs text-rose-500 font-bold flex items-center mt-1"><AlertCircle className="h-3.5 w-3.5 mr-1" />{errors.name}</p>}
@@ -219,7 +228,7 @@ export default function LeadForm({ selectedRequirement }) {
                   placeholder="e.g. 9840029521"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className={`w-full pl-12 pr-4 py-3.5 rounded-xl border ${errors.phone ? "border-rose-300 focus:ring-rose-200 focus:border-rose-400" : "border-slate-200 focus:ring-brand-teal/20 focus:border-brand-teal"} bg-slate-50/50 text-slate-900 placeholder-slate-400 font-medium text-sm focus:outline-none focus:ring-4 transition`}
+                  className={`w-full min-w-0 pl-12 pr-4 py-3.5 rounded-xl border ${errors.phone ? "border-rose-300 focus:ring-rose-200 focus:border-rose-400" : "border-slate-200 focus:ring-brand-teal/20 focus:border-brand-teal"} bg-slate-50/50 text-slate-900 placeholder-slate-400 font-medium text-sm focus:outline-none focus:ring-4 transition`}
                 />
               </div>
               {errors.phone && <p className="text-xs text-rose-500 font-bold flex items-center mt-1"><AlertCircle className="h-3.5 w-3.5 mr-1" />{errors.phone}</p>}
@@ -237,7 +246,7 @@ export default function LeadForm({ selectedRequirement }) {
                   id="area"
                   name="area"
                   autoComplete="off"
-                  placeholder="Type your area (e.g. Mandaveli or Coimbatore)"
+                  placeholder={isHeroVariant ? "Your area" : "Type your area (e.g. Mandaveli or Coimbatore)"}
                   value={formData.area}
                   onChange={handleAreaChange}
                   onFocus={() => {
@@ -245,7 +254,7 @@ export default function LeadForm({ selectedRequirement }) {
                       setShowSuggestions(true);
                     }
                   }}
-                  className={`w-full pl-12 pr-4 py-3.5 rounded-xl border ${errors.area ? "border-rose-300 focus:ring-rose-200 focus:border-rose-400" : "border-slate-200 focus:ring-brand-teal/20 focus:border-brand-teal"} bg-slate-50/50 text-slate-900 placeholder-slate-400 font-medium text-sm focus:outline-none focus:ring-4 transition`}
+                  className={`w-full min-w-0 pl-12 pr-4 py-3.5 rounded-xl border ${errors.area ? "border-rose-300 focus:ring-rose-200 focus:border-rose-400" : "border-slate-200 focus:ring-brand-teal/20 focus:border-brand-teal"} bg-slate-50/50 text-slate-900 placeholder-slate-400 font-medium text-sm focus:outline-none focus:ring-4 transition`}
                 />
               </div>
               {errors.area && <p className="text-xs text-rose-500 font-bold flex items-center mt-1"><AlertCircle className="h-3.5 w-3.5 mr-1" />{errors.area}</p>}
@@ -268,6 +277,7 @@ export default function LeadForm({ selectedRequirement }) {
             </div>
 
             {/* Select Requirement Dropdown */}
+            {!isHeroVariant && (
             <div className="space-y-1.5 text-left">
               <label htmlFor="requirement" className="text-xs font-extrabold uppercase tracking-wider text-slate-500">
                 What do you need? <span className="text-rose-500">*</span>
@@ -297,9 +307,10 @@ export default function LeadForm({ selectedRequirement }) {
               </div>
               {errors.requirement && <p className="text-xs text-rose-500 font-bold flex items-center mt-1"><AlertCircle className="h-3.5 w-3.5 mr-1" />{errors.requirement}</p>}
             </div>
+            )}
 
-            <p className="text-xs text-slate-500 font-semibold leading-relaxed">
-              Grace Speech &amp; Hearing is based in Mandaveli, Chennai. Chennai appointments are given priority.
+            <p className={`${isHeroVariant ? "rounded-xl bg-amber-50 px-3 py-2 text-[11px] text-amber-900" : "text-xs text-slate-500"} break-words font-semibold leading-relaxed`}>
+              {isHeroVariant ? "Mandaveli, Chennai clinic. Local appointments get priority." : "Grace Speech & Hearing is based in Mandaveli, Chennai. Chennai appointments are given priority."}
             </p>
 
             {/* Submit Button */}
@@ -316,7 +327,7 @@ export default function LeadForm({ selectedRequirement }) {
               ) : (
                 <>
                   <Send className="h-5 w-5" />
-                  <span>Get a Call Back</span>
+                  <span>Book Appointment</span>
                 </>
               )}
             </button>
@@ -324,6 +335,21 @@ export default function LeadForm({ selectedRequirement }) {
           </form>
           
         </div>
+    </>
+  );
+
+  if (isHeroVariant) {
+    return (
+      <div id="lead-form" className="min-w-0 scroll-mt-24">
+        {formContent}
+      </div>
+    );
+  }
+
+  return (
+    <section id="lead-form" className="py-12 pb-16 md:py-24 bg-slate-50 relative scroll-mt-20">
+      <div className="max-w-3xl mx-auto px-3 sm:px-6">
+        {formContent}
       </div>
     </section>
   );
