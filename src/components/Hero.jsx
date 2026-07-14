@@ -1,5 +1,5 @@
 import React from "react";
-import { Phone, MessageSquare, Star, CheckCircle2, MapPin, Clock, Volume2 } from "lucide-react";
+import { Phone, MessageSquare, Star, CheckCircle2, Clock, Volume2 } from "lucide-react";
 import LeadForm from "./LeadForm";
 
 export default function Hero() {
@@ -50,12 +50,6 @@ export default function Hero() {
 
         <div className="grid min-w-0 items-center gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
           <div className="min-w-0 space-y-5 text-center lg:text-left">
-            <div className="inline-flex max-w-full items-center gap-2 rounded-full bg-white px-3 py-1.5 text-[11px] font-black uppercase tracking-wider text-brand-teal shadow-sm ring-1 ring-teal-100 sm:text-xs">
-              <MapPin className="h-4 w-4" />
-              <span className="sm:hidden">Mandaveli, Chennai</span>
-              <span className="hidden sm:inline">Mandaveli Hearing Aid Consultation</span>
-            </div>
-
             <div className="overflow-hidden rounded-[1.75rem] border border-white bg-white shadow-xl shadow-slate-900/10 lg:hidden">
               <img
                 src="/assets/hearing-consultation.png"
