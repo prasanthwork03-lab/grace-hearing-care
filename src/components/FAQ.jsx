@@ -27,7 +27,7 @@ export default function FAQ() {
     },
     {
       q: "Do you accept old hearing aid exchange?",
-      a: "Yes, old hearing aid exchange offers are available during special campaigns, including our 26th Anniversary Special Offer. Contact our centre or submit our booking form to get current exchange details."
+      a: "Yes, old hearing aid exchange options are available for eligible devices. Contact our centre or submit the booking form to get current exchange details."
     },
     {
       q: "Do you serve customers outside Chennai?",

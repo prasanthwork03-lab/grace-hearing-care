@@ -7,7 +7,7 @@ export default function TrustSection() {
       name: "Ramanathan K.",
       location: "Mylapore, Chennai",
       rating: 5,
-      review: "Very professional fitting support. I took my father here for a BTE trial. They explained all options in detail, adjusted the frequencies, and offered the 26th Anniversary discount. Highly recommended for senior citizens."
+      review: "Very professional fitting support. I took my father here for a BTE trial. They explained all options in detail, adjusted the frequencies, and made the whole process comfortable for senior citizens."
     },
     {
       name: "Sujatha Sundar",
